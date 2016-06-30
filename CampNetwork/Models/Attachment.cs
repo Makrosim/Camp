@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace CampNetwork.Models
 {
-    public class Attachment
-    {
-        public int Id { get; set; }
+    public class Attachment : BaseEntity
+    { 
         public string Type { get; set; }
         public Article Article { get; set; }
     }

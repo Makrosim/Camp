@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 
 namespace CampNetwork.Models
 {
-    public class Group
+    public class Group : BaseEntity
     {
         public Group()
         {
             Members = new List<User>();
         }
 
-        public int Id { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public virtual User Creator { get; set; }

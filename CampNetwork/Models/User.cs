@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CampNetwork.Models
 {
-    public class User
+    public class User : BaseEntity
     {
         public User()
         {
@@ -15,7 +15,6 @@ namespace CampNetwork.Models
             Friends = new List<User>();
         }
 
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

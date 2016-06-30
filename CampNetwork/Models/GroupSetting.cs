@@ -7,11 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CampNetwork.Models
 {
-    public class GroupSetting
+    public class GroupSetting : BaseEntity
     {
         [Key]
         [ForeignKey("Group")]
-        public int Id { get; set; }
+        public new int Id { get; set; }
         public Group Group { get; set; }
     }
 }

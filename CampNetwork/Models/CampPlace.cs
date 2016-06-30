@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CampNetwork.Models
 {
-    public class CampPlace
+    public class CampPlace : BaseEntity
     {
         public enum Rates
         {
@@ -16,7 +16,6 @@ namespace CampNetwork.Models
             VeryGood = 5
         }
 
-        public int Id { get; set; }
         public string Name { get; set; }
         public double LocationX { get; set; } // Координаты
         public double LocationY { get; set; } // Координаты

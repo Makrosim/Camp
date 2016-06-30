@@ -5,9 +5,8 @@ using System.Web;
 
 namespace CampNetwork.Models
 {
-    public class Comment
+    public class Comment : BaseEntity
     {
-        public int Id { get; set; }
         public string Text { get; set; }
     }
 }

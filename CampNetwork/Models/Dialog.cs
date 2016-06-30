@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace CampNetwork.Models
 {
-    public class Dialog
+    public class Dialog : BaseEntity
     {
-        public int Id { get; set; }
+
     }
 }
