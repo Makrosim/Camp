@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Article</h2>
+<div>
+    <form method="post">
+        <input type="hidden" value="@ViewBag.CampPlaceId" name="CampPlaceID"/>
+        <textarea class="textarea_article" name="Text"></textarea>
+        <input type="submit" value="Отправить" />
+    </form>
+</div>
+

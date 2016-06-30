@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Ваши места отдыха</h1>
+<div>
+    <a href="/CampPlaces/AddCampPlace">Добавить место отдыха</a>
+    <a href="/CampPlaces/Index">Показать карту</a>
+</div>
+<div>
+    @{if (ViewBag.CP != null)
+        {
+            foreach (var cp in ViewBag.CP)
+            {
+                <div class="upper_list_text">@cp.Id.@cp.Name</div>
+                <div class="upper_list_text">Координаты: @cp.LocationX, @cp.LocationY</div>
+                <div class="upper_list_text">Чистота: @cp.Purity</div>
+                <div>Людность: @cp.Crowdy</div>
+                <div>Доступность: @cp.Appriachibility</div>
+                <div>Комфорт: @cp.Comfortableness</div>
+                <div class="lower_list_text">@cp.ShortDescription</div>
+                <div>Обзоров: @{if(cp.Articles == null)
+                                {
+                                    <span>0</span>
+                                }
+                                else
+                                {
+                                    <span>@cp.Articles.Count</span>
+                                }
+                               }
+                     <a href="/Article/Index/@cp.Id">Добавить обзор</a> <a class="left_buttons" href="/CampPlaces/Delete/@cp.Id">Удалить место отдыха</a>
+                </div>
+            }
+        }
+    }
+    
+</div>
+

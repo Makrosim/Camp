@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "CreateGroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateGroup</h2>
+
+<form method="post" action="">
+    <div>
+        <div>Название групппы</div>
+        <input type="text" name="Name" />
+    </div>
+    <div>
+        <div>Краткое описание (Тематика, принадлежность городу, организации и т.д.)</div>
+        <textarea class="textarea_group" name="ShortDescription"></textarea>
+    </div>
+    <input type="submit" value="Создать"/>
+</form>
+

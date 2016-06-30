@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Group.Name</h2>
+<div>
+    <table class="mailtable">
+        <tr>
+            <td rowspan="4" width="120" class="table_border_right"></td>
+            <td height="30" class="table_border_bottom"></td>
+        </tr>
+        <tr>
+            <td height="30" class="table_border_bottom">Кол-во учасников: @ViewBag.Group.Members.Count</td>
+        </tr>
+        <tr>
+            <td height="30" class="table_border_bottom">Создатель: @ViewBag.Group.Creator.FirstName @ViewBag.Group.Creator.LastName</td>
+        </tr>
+        <tr>
+            <td height="100" class="table_border_bottom">@ViewBag.Group.ShortDescription</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <form method="post" action="">
+        <input type="hidden" value="@ViewBag.Group.Id" name="grId"/>
+        <label>Id Обзора: </label>
+        <input type="text" name="ArtId"/>
+        <input type="submit" value="Добавить обзор"/>
+    </form>
+</div>
+<div>
+    @if (ViewBag.GroupArticles != null)
+    {
+        foreach (var a in ViewBag.GroupArticles)
+        {
+            <div class="upper_list_text">Место отдыха: @a.CampPlace.Name <a class="left_buttons" href="/Article/Delete/@a.Id">Удалить обзор</a></div>
+            <div class="upper_list_text">@a.Text</div>
+            <div class="lower_list_text">@a.CreationDate     @a.Id</div>
+        }
+    }
+</div>
+

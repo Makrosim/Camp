@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="map"></div>
+
+<div class="fields">
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td class="table_border_right">Название</td>
+                <td class="table_border_bottom"><input type="text" name="Name" /></td>
+            </tr>
+            <tr>
+                <td class="table_border_right">Долгота</td>
+                <td class="table_border_bottom"><input type="text" name="LocationX" /></td>
+            </tr>
+            <tr>
+                <td class="table_border_right">Широта</td>
+                <td class="table_border_bottom"><input type="text" name="LocationY" /></td>
+            </tr>
+            <tr>
+                <td class="table_border_right">Чистота</td>
+                <td class="table_border_bottom">
+                    <div>
+                        @Html.RadioButton("Purity", "VaryBad")
+                        @Html.RadioButton("Purity", "Bad")
+                        @Html.RadioButton("Purity", "Medium")
+                        @Html.RadioButton("Purity", "Good")
+                        @Html.RadioButton("Purity", "VeryGood")
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">Людность</td>
+                <td class="table_border_bottom">
+                    <div>
+                        @Html.RadioButton("Crowdy", "VaryBad")
+                        @Html.RadioButton("Crowdy", "Bad")
+                        @Html.RadioButton("Crowdy", "Medium")
+                        @Html.RadioButton("Crowdy", "Good")
+                        @Html.RadioButton("Crowdy", "VeryGood")
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">Доступность</td>
+                <td class="table_border_bottom">
+                    <div>
+                        @Html.RadioButton("Appriachibility", "VaryBad")
+                        @Html.RadioButton("Appriachibility", "Bad")
+                        @Html.RadioButton("Appriachibility", "Medium")
+                        @Html.RadioButton("Appriachibility", "Good")
+                        @Html.RadioButton("Appriachibility", "VeryGood")
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table_border_right">Комфортабельность</td>
+                <td class="table_border_bottom">
+                    <div>
+                        @Html.RadioButton("Comfortableness", "VaryBad")
+                        @Html.RadioButton("Comfortableness", "Bad")
+                        @Html.RadioButton("Comfortableness", "Medium")
+                        @Html.RadioButton("Comfortableness", "Good")
+                        @Html.RadioButton("Comfortableness", "VeryGood")
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="table_border_bottom">
+                    <textarea class="textarea_camp" name="ShortDescription" ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Отправить"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
