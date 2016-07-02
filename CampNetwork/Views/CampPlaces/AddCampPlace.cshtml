@@ -3,22 +3,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="map"></div>
+<div class="map" id="map"></div>
 
 <div class="fields">
     <form method="post" action="">
         <table>
             <tr>
                 <td class="table_border_right">Название</td>
-                <td class="table_border_bottom"><input type="text" name="Name" /></td>
+                <td class="table_border_bottom"><input type="text" name="Name"/></td>
             </tr>
             <tr>
                 <td class="table_border_right">Долгота</td>
-                <td class="table_border_bottom"><input type="text" name="LocationX" /></td>
+                <td class="table_border_bottom"><input type="text" name="LocationX" id="lng"/></td>
             </tr>
             <tr>
                 <td class="table_border_right">Широта</td>
-                <td class="table_border_bottom"><input type="text" name="LocationY" /></td>
+                <td class="table_border_bottom"><input type="text" name="LocationY" id="lat"/></td>
             </tr>
             <tr>
                 <td class="table_border_right">Чистота</td>
@@ -79,4 +79,39 @@
         </table>
     </form>
 </div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBiYT8YJ36AWUsSXozMhCOWi-ruz0tgPc&callback=initMap"></script>
+
+<script type="text/javascript">
+
+    var map;
+
+    function initMap()
+    {
+        var myLatlng = { lat: 50, lng: 36.28 };
+
+        map = new google.maps.Map(document.getElementById('map'), {center: myLatlng, zoom: 8});
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            draggable: true,
+            title: 'Click to zoom'
+        });
+
+        marker.addListener('drag', function ()
+        {
+            var lng = document.getElementById('lng');
+            var lat = document.getElementById('lat');
+            lng.value = marker.getPosition().lng();
+            lat.value = marker.getPosition().lat();
+        });
+
+        marker.addListener('click', function () {
+            map.setZoom(8);
+            map.setCenter(marker.getPosition());
+        });
+    }
+</script>
+
 

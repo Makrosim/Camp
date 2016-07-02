@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Настройки пользователя</h2>
+
+<form method="post" action="">
+    <input type="hidden" name="Id" value="@ViewBag.User.Id"/>
+    <div>
+        <label for="inp_FirstName">Имя</label>
+        <div>
+            <input id="inp_FirstName" type="text" name="FirstName" value="@ViewBag.User.FirstName"/>
+        </div>
+    </div>
+    <div>
+        <label for="inp_LastName">Фамилия</label>
+        <div>
+            <input id="inp_LastName" type="text" name="LastName" value="@ViewBag.User.LastName"/>
+        </div>
+    </div>
+    <div>
+        <label for="inp_BirthDate">День рождения</label>
+        <div>
+            <input id="inp_BirthDate" type="datetime" name="BirthDate" value="@ViewBag.User.BirthDate"/>
+        </div>
+    </div>
+    <div>
+        <label for="inp_Adress">Адрес</label>
+        <div>
+            <input id="inp_Adress" type="text" name="Adress" value="@ViewBag.User.Adress"/>
+        </div>
+    </div>
+    <div>
+        <label for="inp_Skype">Skype</label>
+        <div>
+            <input id="inp_Skype" type="text" name="Skype" value="@ViewBag.User.Skype"/>
+        </div>
+    </div>
+    <div>
+        <label for="inp_Phone">Телефон</label>
+        <div>
+            <input id="inp_Phone" type="tel" name="Phone" value="@ViewBag.User.Phone"/>
+        </div>
+    </div>
+    <div>
+        <label for="inp_AdditionalInformation">Дополнительная информация</label>
+        <div>
+            <textarea rows="5" cols="50" id="inp_AdditionalInformation" name="AdditionalInformation">@ViewBag.User.AdditionalInformation</textarea>
+        </div>
+    </div>
+    <input type="submit" value="Сохранить"/>
+</form>
+

@@ -17,8 +17,8 @@ namespace CampNetwork.Models
         }
 
         public string Name { get; set; }
-        public double LocationX { get; set; } // Координаты
-        public double LocationY { get; set; } // Координаты
+        public virtual string LocationX { get; set; } // Координаты
+        public virtual string LocationY { get; set; } // Координаты
         public Rates Purity { get; set; }
         public Rates Crowdy { get; set; }
         public Rates Appriachibility { get; set; }

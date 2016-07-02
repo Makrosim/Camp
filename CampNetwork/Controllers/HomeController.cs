@@ -11,6 +11,7 @@ namespace CampNetwork.Controllers
     {
         CampContext db = new CampContext();
 
+        [HttpGet]
         public ActionResult Index()
         {
             User currUser = db.Users.Find(1);

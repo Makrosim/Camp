@@ -50,6 +50,7 @@ button
 {
     float: left;
     width: 69%;
+    height: 500px;
     border: 1px solid black;
 }
 
@@ -92,4 +93,10 @@ button
 {
     height: 100px;
     width: 1000px;
+}
+
+.div_label_user
+{
+    display: inline-block;
+    width: 200px;
 }

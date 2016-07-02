@@ -11,11 +11,22 @@ namespace CampNetwork.Controllers
     public class CampPlacesController : Controller
     {
         CampContext db = new CampContext();
-        // GET: CampPlaces
+
+        [HttpGet]
         public ActionResult Index()
         {
             User currUser = db.Users.Find(1);
-            ViewBag.CP = currUser.CampPlaces.ToList();
+            var cps = currUser.CampPlaces.ToList();
+            ViewBag.CP = cps;
+
+            var points = new List<string>();
+
+            foreach (var cp in cps)
+            {
+                points.Add(cp.LocationX + " " + cp.LocationY + " " + cp.Name);
+            }
+
+            ViewBag.Points = points;
 
             return View();
         }
