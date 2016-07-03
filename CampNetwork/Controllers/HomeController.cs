@@ -26,5 +26,32 @@ namespace CampNetwork.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public RedirectResult Index(int ArtId, string Text)
+        {
+            User currUser = db.Users.Find(1);
+
+            db.Articles.Find(1).Comments.Add(new Comment
+            {
+                Author = currUser,
+                Text = Text,
+                Date = DateTime.Now
+            });
+
+            db.SaveChanges();
+
+            return Redirect("/Home/Index");
+        }
+
+        [HttpGet]
+        public RedirectResult DeleteComment(int Id)
+        {
+            var com = db.Comments.Find(Id);
+            db.Comments.Remove(com);
+            db.SaveChanges();
+
+            return Redirect("/Home/Index");
+        }
     }
 }

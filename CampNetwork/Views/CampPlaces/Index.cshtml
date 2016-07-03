@@ -11,7 +11,7 @@
     </ul> 
 </div>
 
-<div class="index-map" id="map"></div>
+<div class="map" hidden id="map"></div>
 
 <div class="panel-group">
     @{if (ViewBag.CP != null)
@@ -43,26 +43,18 @@
 
 <script type="text/javascript">
 
-    var opened = false;
-
     var link = document.getElementById("maplink");
     var divmap = document.getElementById("map");
     var map;
 
     link.onclick = function ()
     {
-        if(opened)
-        {
+        divmap.hidden = !divmap.hidden;
+
+        if(divmap.hidden)
             delete map;
-            divmap.style.height = 0 + "px";
-            opened = false;
-        }
         else
-        {
-            divmap.style.height = 500 + "px";
             initMap();
-            opened = true;
-        }
     }
 
     function initMap()

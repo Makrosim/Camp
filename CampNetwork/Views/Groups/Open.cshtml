@@ -7,7 +7,7 @@
         <div class="navbar-brand">Обзор группы</div>
     </div>
 
-    <form class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" method="post" action="">
         <div class="form-group">
             <input type="hidden" value="@ViewBag.Group.Id" name="grId" />
             <input class="form-control" type="text" name="ArtId"  placeholder="Id Обзора" />
@@ -28,11 +28,6 @@
     </div>
 </div>
 
-<div>
-    <form method="post" action="">
-
-    </form>
-</div>
 <div class="panel-group">
     @if (ViewBag.GroupArticles != null)
     {
@@ -41,8 +36,29 @@
             <div class="panel panel-info">
                 <div class="panel-heading">Место отдыха: @a.CampPlace.Name </div>
                 <div class="panel-body">@a.Text</div>
-                <div class="panel-footer">@a.CreationDate    Id статьи: @a.Id<a class="pull-right btn btn-danger btn-xs" href="/Article/Delete/@a.Id">Удалить обзор</a></div>
+                <div class="panel-footer">
+                    @a.CreationDate    Id статьи: @a.Id
+                    <a class="pull-right btn btn-danger btn-xs" href="/Article/Delete/@a.Id">Удалить обзор</a>
+                    <a id="comment" class="pull-right btn btn-info btn-xs">Комментировать</a>
+                </div>
             </div>
+            <form id="comment-area" method="post" hidden class="comment-area" action="">
+                <div class="form-group">
+                    <input type="hidden" name="ArtId" value="@a.Id" />
+                    <textarea class="form-control" name="Text"></textarea>
+                </div>
+                <input id="sub" class="btn btn-success" type="submit" value="Комментировать" />
+            </form>
+            if (a.Comments != null)
+            {
+                <dl class="col-md-offset-1 dl-comment">
+                    @foreach (var c in a.Comments)
+                    {
+                        <dt>@c.Author.FirstName @c.Author.LastName в @c.Date <a class="btn btn-xs btn-danger" href="/Home/DeleteComment/@c.Id">x</a></dt>
+                        <dd> - @c.Text</dd>
+                    }
+                </dl>
+            }
         }
     }
 </div>

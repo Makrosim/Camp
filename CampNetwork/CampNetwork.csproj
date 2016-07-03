@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CampPlacesController.cs" />
+    <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -202,6 +203,7 @@
     <Content Include="Views\Groups\CreateGroup.cshtml" />
     <Content Include="Views\Groups\Open.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Dialog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
