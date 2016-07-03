@@ -1,41 +1,41 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Ваши места отдыха</h1>
-<div>
-    <a href="/CampPlaces/AddCampPlace">Добавить место отдыха</a>
-    <a id="maplink">Показать карту</a>
+<div class="navbar" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Места отдыха</div>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/CampPlaces/CreateCampPlace">Добавить</a></li>
+        <li><a id="maplink">Показать/Скрыть карту</a></li>
+    </ul> 
 </div>
 
-<div id="map"></div>
+<div class="index-map" id="map"></div>
 
-<div>
-
+<div class="panel-group">
     @{if (ViewBag.CP != null)
-        {
+      {
             foreach (var cp in ViewBag.CP)
             {
-                <div class="upper_list_text">@cp.Id.@cp.Name</div>
-                <div class="upper_list_text">Координаты: @cp.LocationX, @cp.LocationY</div>
-                <div class="upper_list_text">Чистота: @cp.Purity</div>
-                <div>Людность: @cp.Crowdy</div>
-                <div>Доступность: @cp.Appriachibility</div>
-                <div>Комфорт: @cp.Comfortableness</div>
-                <div class="lower_list_text">@cp.ShortDescription</div>
-                <div>Обзоров: @{if(cp.Articles == null)
-                                {
-                                    <span>0</span>
-                                }
-                                else
-                                {
-                                    <span>@cp.Articles.Count</span>
-                                }
-                               }
-                     <a href="/Article/Index/@cp.Id">Добавить обзор</a> <a class="left_buttons" href="/CampPlaces/Delete/@cp.Id">Удалить место отдыха</a>
+                <div class="panel panel-info">
+                    <div class="panel-heading">@cp.Id.@cp.Name</div>
+                    <div class="panel-body">
+                        <p>Координаты: @cp.LocationX, @cp.LocationY</p>
+                        <p>Чистота: @cp.Purity</p>
+                        <p>Людность: @cp.Crowdy</p>
+                        <p>Доступность: @cp.Appriachibility</p>
+                        <p>Комфорт: @cp.Comfortableness</p>
+                        <p>@cp.ShortDescription</p>
+                    </div>
+                    <div class="panel-footer"> Обзоров: @(cp.Articles?.Count ?? 0)
+                        <a class="pull-right btn btn-danger btn-xs" href="/CampPlaces/Delete/@cp.Id">Удалить место отдыха</a>      
+                        <a class="pull-right btn btn-info btn-xs" href="/Article/Index/@cp.Id">Добавить обзор</a>                                     
+                    </div>
                 </div>
             }
-        }
-    }
+      }
+     }
     
 </div>
 

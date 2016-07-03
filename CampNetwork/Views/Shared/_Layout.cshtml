@@ -4,33 +4,27 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@ViewBag.Title - My ASP.NET Application</title>
+        <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
-        <div class="body">
-            <div class="left-side_panel">
+        <div class="container">
+            <div class="col-md-10">
                 @RenderBody()
             </div>
-            <div class="right-side_panel">
-                <table>
-                    <tr>
-                        <td><form action="/Home/Index"><button type="submit"><img src="" alt="Профиль" /></button></form></td>
-                    </tr>
-                    <tr>
-                        <td><button><img src="" alt="Чат" /></button></td>
-                    </tr>
-                    <tr>
-                        <td><form action="/CampPlaces/Index"><button type="submit"><img src="" alt="Места отдыха" /></button></form></td>
-                    </tr>
-                    <tr>
-                        <td><form action="/Groups/Groups"><button type="submit"><img src="" alt="Группы" /></button></form></td>
-                    </tr>
-                    <tr>
-                        <td><form action="/User/Index"><button><img src="" alt="Настройки" /></button></form></td>
-                    </tr>
-                </table>
+            <div class="col-md-2 sidebar-offcanvas" role="navigation">
+                <div class="list-group">
+                    <a class="list-group-item active" href="/Home/Index">Профиль</a>
+                    <a class="list-group-item" href="/CampPlaces/Index">Диалоги</a>
+                    <a class="list-group-item" href="/CampPlaces/Index">Места отдыха</a>
+                    <a class="list-group-item" href="/Groups/Index">Группы</a>
+                    <a class="list-group-item" href="/User/Index">Настройки</a>
+                </div>
             </div>
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
     </body>
 </html>

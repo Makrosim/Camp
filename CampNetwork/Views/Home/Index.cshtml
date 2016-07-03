@@ -2,39 +2,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="maintable">
-    <table class="maintable">
-        <tr>
-            <td rowspan="4" width="120" class="table_border_right"></td>
-            <td height="30" class="table_border_bottom" >@ViewBag.User.FirstName @ViewBag.User.LastName</td>
-        </tr>
-        <tr>
-            <td height="30" class="table_border_bottom">@ViewBag.User.BirthDate</td>
-        </tr>
-        <tr>
-            <td height="30" class="table_border_bottom">Адрес: @ViewBag.User.Adress, Skype: @ViewBag.User.Skype, Телефон: @ViewBag.User.Phone</td>
-        </tr>
-        <tr>
-            <td height="100" class="table_border_bottom">@ViewBag.User.AdditionalInformation</td>
-        </tr>
-    </table>
+<div class="row user-info">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-10">
+        <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
+        <p>@ViewBag.User.BirthDate</p>
+        <p>Адрес: @ViewBag.User.Adress, Skype: @ViewBag.User.Skype, Телефон: @ViewBag.User.Phone</p>
+        <p>@ViewBag.User.AdditionalInformation</p>
+    </div>
 </div>
 
-<div>
-
-</div>
-
-<div>
+<div class="panel-group">
     @if (ViewBag.Articles != null)
     {
         foreach (var a in ViewBag.Articles)
         {
-            <div class="upper_list_text">Место отдыха: @a.CampPlace.Name <a class="left_buttons" href="/Article/Delete/@a.Id">Удалить обзор</a></div>
-            <div class="upper_list_text">@a.Text</div>
-            <div class="lower_list_text">@a.CreationDate    Id статьи: @a.Id</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">Место отдыха: @a.CampPlace.Name </div>
+                <div class="panel-body">@a.Text</div>
+                <div class="panel-footer">@a.CreationDate    Id статьи: @a.Id<a class="pull-right btn btn-danger btn-xs" href="/Article/Delete/@a.Id">Удалить обзор</a></div>
+            </div>
         }
     }
-
 </div>
 
 

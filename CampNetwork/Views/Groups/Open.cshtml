@@ -2,40 +2,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Group.Name</h2>
-<div>
-    <table class="mailtable">
-        <tr>
-            <td rowspan="4" width="120" class="table_border_right"></td>
-            <td height="30" class="table_border_bottom"></td>
-        </tr>
-        <tr>
-            <td height="30" class="table_border_bottom">Кол-во учасников: @ViewBag.Group.Members.Count</td>
-        </tr>
-        <tr>
-            <td height="30" class="table_border_bottom">Создатель: @ViewBag.Group.Creator.FirstName @ViewBag.Group.Creator.LastName</td>
-        </tr>
-        <tr>
-            <td height="100" class="table_border_bottom">@ViewBag.Group.ShortDescription</td>
-        </tr>
-    </table>
-</div>
-<div>
-    <form method="post" action="">
-        <input type="hidden" value="@ViewBag.Group.Id" name="grId"/>
-        <label>Id Обзора: </label>
-        <input type="text" name="ArtId"/>
-        <input type="submit" value="Добавить обзор"/>
+<div class="navbar" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Обзор группы</div>
+    </div>
+
+    <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+            <input type="hidden" value="@ViewBag.Group.Id" name="grId" />
+            <input class="form-control" type="text" name="ArtId"  placeholder="Id Обзора" />
+        </div>
+        <button type="submit" class="btn btn-default">Добавить</button>
     </form>
 </div>
+
+<div class="row user-info">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-10">
+        <p>@ViewBag.Group.Name</p>
+        <p>Кол-во учасников: @ViewBag.Group.Members.Count</p>
+        <p>Создатель: @ViewBag.Group.Creator.FirstName @ViewBag.Group.Creator.LastName</p>
+        <p>@ViewBag.Group.ShortDescription</p>
+    </div>
+</div>
+
 <div>
+    <form method="post" action="">
+
+    </form>
+</div>
+<div class="panel-group">
     @if (ViewBag.GroupArticles != null)
     {
         foreach (var a in ViewBag.GroupArticles)
         {
-            <div class="upper_list_text">Место отдыха: @a.CampPlace.Name <a class="left_buttons" href="/Article/Delete/@a.Id">Удалить обзор</a></div>
-            <div class="upper_list_text">@a.Text</div>
-            <div class="lower_list_text">@a.CreationDate     @a.Id</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">Место отдыха: @a.CampPlace.Name </div>
+                <div class="panel-body">@a.Text</div>
+                <div class="panel-footer">@a.CreationDate    Id статьи: @a.Id<a class="pull-right btn btn-danger btn-xs" href="/Article/Delete/@a.Id">Удалить обзор</a></div>
+            </div>
         }
     }
 </div>

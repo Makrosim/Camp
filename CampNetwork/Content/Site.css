@@ -5,98 +5,27 @@
     background-color: #f7f7fa;
 }
 
-.maintable
-{
-    width: 100%;
-}
 
-.body
+.index-map
 {
-    align-self: center;
-    width: 70%;
-    margin-left: 15%;
-}
-
-.left-side_panel
-{
-    float: left;
-    width: 89%;
-}
-
-.right-side_panel
-{
-    width: 10%;
-    float: right;
-}
-
-button
-{
-    height: 100px;
-    width: 100px;
-}
-
-.table_border_bottom
-{
-    border-bottom: 1px solid black;
-}
-
-.table_border_right
-{
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    margin-bottom: 10px;
 }
 
 .map
 {
-    float: left;
-    width: 69%;
     height: 500px;
-    border: 1px solid black;
-}
-
-.fields
-{
-    float: right;
-    width: 30%;
-}
-
-.upper_list_text
-{
-    margin-top: 10px;
-}
-
-.lower_list_text
-{
-    margin-top: 5px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed gray;
-}
-
-.textarea_camp
-{
-    height: 200px;
-    width: 300px;
-}
-
-.textarea_article
-{
-    height: 500px;
-    width: 1000px;
-}
-
-.left_buttons
-{
-    float: right;
-}
-
-.textarea_group
-{
-    height: 100px;
-    width: 1000px;
+    margin-bottom: 10px;
 }
 
 .div_label_user
 {
     display: inline-block;
     width: 200px;
+}
+
+.user-info
+{
+      color: inherit;
+      background-color: #eee;
+      margin-bottom: 10px;
 }

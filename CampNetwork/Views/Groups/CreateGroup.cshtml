@@ -1,20 +1,23 @@
 ﻿
 @{
-    ViewBag.Title = "CreateGroup";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateGroup</h2>
+<div class="navbar" role="navigation">
+    <div class="navbar-header">
+        <div class="navbar-brand">Создание группы</div>
+    </div>
+</div>
 
 <form method="post" action="">
-    <div>
-        <div>Название групппы</div>
-        <input type="text" name="Name" />
+    <div class="form-group">
+        <label>Название групппы</label>
+        <input class="form-control" type="text" name="Name" />
     </div>
-    <div>
-        <div>Краткое описание (Тематика, принадлежность городу, организации и т.д.)</div>
-        <textarea class="textarea_group" name="ShortDescription"></textarea>
+    <div class="form-group">
+        <label>Краткое описание (Тематика, принадлежность городу, организации и т.д.)</label>
+        <textarea class="form-control" name="ShortDescription"></textarea>
     </div>
-    <input type="submit" value="Создать"/>
+    <input class="btn btn-success" type="submit" value="Создать"/>
 </form>
 

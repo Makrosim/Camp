@@ -11,10 +11,12 @@ namespace CampNetwork.Controllers
     public class GroupsController : Controller
     {
         CampContext db = new CampContext();
-        // GET: Groups
-        public ActionResult Groups()
+
+        [HttpGet]
+        public ActionResult Index()
         {
             ViewBag.Groups = db.Groups.ToList();
+
             return View();
         }
 
@@ -30,6 +32,7 @@ namespace CampNetwork.Controllers
             var group = db.Groups.Find(Id);
             ViewBag.Group = group;
             ViewBag.GroupArticles = group.Articles.ToList();
+
             return View();
         }
 
@@ -39,6 +42,7 @@ namespace CampNetwork.Controllers
             Group gr = db.Groups.Find(grId);
             gr.Articles.Add(db.Articles.Find(ArtId));
             db.SaveChanges();
+
             return Redirect($"/Groups/Open/{grId}");
         }
 
@@ -50,7 +54,8 @@ namespace CampNetwork.Controllers
             gr.Members.Add(currUser);
             db.Groups.Add(gr);
             db.SaveChanges();
-            return Redirect("Groups/Groups");
+
+            return Redirect("/Groups/Index");
         }
     }
 }

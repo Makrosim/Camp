@@ -32,9 +32,37 @@ namespace CampNetwork.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddCampPlace()
+        public ActionResult Update(int id)
+        {
+            ViewBag.CP = db.CampPlaces.Find(id);
+
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectResult Update(CampPlace cp)
+        {
+            db.Entry(cp).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Redirect("/CampPlaces/Index");
+        }
+
+        [HttpGet]
+        public ActionResult CreateCampPlace()
         {
             return View();
+        }
+
+        [HttpPost]
+        public RedirectResult CreateCampPlace(CampPlace place)
+        {
+            place.User = db.Users.Find(1);
+            db.CampPlaces.Add(place);
+            db.SaveChanges();
+            ViewBag.CP = db.Users.Find(1).CampPlaces.ToList();
+
+            return Redirect("/CampPlaces/Index");
         }
 
         [HttpGet]
@@ -42,17 +70,6 @@ namespace CampNetwork.Controllers
         {
             db.CampPlaces.Remove(db.CampPlaces.Find(id));
             db.SaveChanges();
-
-            return View("Index");
-        }
-
-        [HttpPost]
-        public ActionResult AddCampPlace(CampPlace place)
-        {
-            place.User = db.Users.Find(1);
-            db.CampPlaces.Add(place);
-            db.SaveChanges();
-            ViewBag.CP = db.Users.Find(1).CampPlaces.ToList();
 
             return View("Index");
         }
