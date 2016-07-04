@@ -16,6 +16,7 @@ namespace CampNetwork.Controllers
         public ActionResult Index()
         {
             ViewBag.User = db.Users.Find(1);
+
             return View();
         }
 

@@ -42,7 +42,7 @@
                     <a id="comment" class="pull-right btn btn-info btn-xs">Комментировать</a>
                 </div>
             </div>
-            <form id="comment-area" method="post" hidden class="comment-area" action="">
+            <form id="comment-area" method="post" hidden class="comment-area" action="/Groups/Comment">
                 <div class="form-group">
                     <input type="hidden" name="ArtId" value="@a.Id" />
                     <textarea class="form-control" name="Text"></textarea>
@@ -54,7 +54,7 @@
                 <dl class="col-md-offset-1 dl-comment">
                     @foreach (var c in a.Comments)
                     {
-                        <dt>@c.Author.FirstName @c.Author.LastName в @c.Date <a class="btn btn-xs btn-danger" href="/Home/DeleteComment/@c.Id">x</a></dt>
+                        <dt>@c.Author.FirstName @c.Author.LastName в @c.Date <a class="btn btn-xs btn-danger" href="/Groups/DeleteComment/?ArtId=@a.Id&Id=@c.Id">x</a></dt>
                         <dd> - @c.Text</dd>
                     }
                 </dl>
@@ -63,3 +63,20 @@
     }
 </div>
 
+<script type="text/javascript">
+
+    var com = document.getElementById("comment");
+    var sub = document.getElementById("sub");
+    var area = document.getElementById("comment-area");
+
+    com.onclick = function ()
+    {
+        area.hidden = !area.hidden;
+    }
+
+    sub.onclick = function ()
+    {
+        area.hidden = true;
+    }
+
+</script>

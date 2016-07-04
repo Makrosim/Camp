@@ -16,14 +16,26 @@ namespace CampNetwork.Controllers
         public ActionResult Index(int id)
         {
             ViewBag.CampPlaceID = id;
+
             return View();
         }
 
         [HttpGet]
         public RedirectResult Delete(int id)
         {
-            db.Articles.Remove(db.Articles.Find(1));
+            var currart = db.Articles.Find(1);
+            var list = new List<Comment>();
+            foreach (var a in currart.Comments)
+            {
+                list.Add(a);
+            }
+            foreach (var a in list)
+            {
+                db.Comments.Remove(a);
+            }
+            db.Articles.Remove(currart);
             db.SaveChanges();
+
             return Redirect("/Home/Index");
         }
 
@@ -35,6 +47,7 @@ namespace CampNetwork.Controllers
             db.SaveChanges();
             art.CampPlace = db.CampPlaces.Find(art.CampPlaceID);
             db.SaveChanges();
+
             return Redirect("/Home/Index");
         }
     }

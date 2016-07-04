@@ -57,5 +57,32 @@ namespace CampNetwork.Controllers
 
             return Redirect("/Groups/Index");
         }
+
+        [HttpPost]
+        public RedirectResult Comment(int ArtId, string Text)
+        {
+            User currUser = db.Users.Find(1);
+
+            db.Articles.Find(1).Comments.Add(new Comment
+            {
+                Author = currUser,
+                Text = Text,
+                Date = DateTime.Now
+            });
+
+            db.SaveChanges();
+
+            return Redirect($"/Groups/Open/{ArtId}");
+        }
+
+        [HttpGet]
+        public RedirectResult DeleteComment(int ArtId, int Id)
+        {
+            var com = db.Comments.Find(Id);
+            db.Comments.Remove(com);
+            db.SaveChanges();
+
+            return Redirect($"/Groups/Open/{ArtId}");
+        }
     }
 }
