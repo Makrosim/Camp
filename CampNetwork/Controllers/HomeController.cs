@@ -22,6 +22,11 @@ namespace CampNetwork.Controllers
             foreach(var art in currUser.CampPlaces)
                 artlist.AddRange(art.Articles);
 
+            if (currUser.Attachment.Count() != 0)
+            {
+                ViewBag.Attachment = currUser.Attachment.First();
+            }
+
             ViewBag.Articles = artlist;
 
             return View();

@@ -4,7 +4,10 @@
 
 <div class="row user-info">
     <div class="col-md-2">
-
+        @if(ViewBag.Attachment != null)
+        {
+            @Html.Raw("<img style='width:145px; height:240px;' src=\"data:image/jpg;base64," + Convert.ToBase64String(ViewBag.Attachment.Bytes) + "\" />")
+        }
     </div>
     <div class="col-md-10">
         <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
